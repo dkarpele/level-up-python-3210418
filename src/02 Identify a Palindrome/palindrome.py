@@ -1,10 +1,9 @@
-import re
+from string import punctuation
 
-def is_palindrome(phrase):
-    forwards = ''.join(re.findall(r'[a-z]+', phrase.lower()))
-    backwards = forwards[::-1]
-    return forwards == backwards
 
+def is_palindrome(phrase: str):
+    phrase = phrase.lower().translate({ord(i): None for i in punctuation + ' '})
+    return phrase[:] == phrase[::-1]
 
 # commands used in solution video for reference
 if __name__ == '__main__':
